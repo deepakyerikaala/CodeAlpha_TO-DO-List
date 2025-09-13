@@ -7,8 +7,9 @@ body {
   height: 100vh;
   margin: 0;
 }
-.todo-container {
-  width: 400px;
+  .todo-container {
+  width: 600px;
+  max-width: 90%;
   background: #1e1e2f;
   color: #fff;
   padding: 20px;
@@ -18,6 +19,23 @@ body {
 .todo-container h1 {
   text-align: center;
   margin-bottom: 15px;
+}
+.filters {
+  text-align: center;
+  margin: 10px 0 20px 0;
+}
+.filters button {
+  background: #444;
+  color: #fff;
+  border: none;
+  margin: 0 5px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.filters button:hover {
+  background: #666;
 }
 .input-group {
   display: flex;
@@ -46,7 +64,7 @@ body {
   padding: 0;
   margin: 0;
 }
-#taskList li {
+ #taskList li {
   background: #2a2a40;
   padding: 10px;
   margin-bottom: 8px;
@@ -54,6 +72,28 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
+}
+.task-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  overflow: hidden;
+}
+.task-left span {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+button.deleteBtn,
+button.editBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px 6px;
 }
 .task-left {
   display: flex;
@@ -89,4 +129,8 @@ button.editBtn {
   color: #ccc;
   border-top: 1px solid #333;
   padding-top: 8px;
+}
+.filters {
+  text-align: center;
+  margin: 0 0 15px 0;
 }

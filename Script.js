@@ -73,10 +73,33 @@ function saveTasks() {
   });
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
-
 function updateTaskCount() {
   const allTasks = document.querySelectorAll("#taskList li");
   const completed = document.querySelectorAll("#taskList .completed").length;
   const uncompleted = allTasks.length - completed;
   taskCount.textContent = `Completed: ${completed} | Uncompleted: ${uncompleted}`;
+}
+taskInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    addTaskFromInput();
+  }
+});
+function addTaskFromInput() {
+  const text = taskInput.value.trim();
+  if (text) {
+    addTask(text);
+    saveTasks();
+    updateTaskCount();
+    taskInput.value = "";
+  }
+}
+function filterTasks(type) {
+  const tasks = document.querySelectorAll("#taskList li");
+  tasks.forEach(task => {
+    const isCompleted = task.querySelector("span").classList.contains("completed");
+    if (type === "all") task.style.display = "flex";
+    else if (type === "active" && isCompleted) task.style.display = "none";
+    else if (type === "completed" && !isCompleted) task.style.display = "none";
+    else task.style.display = "flex";
+  });
 }
